@@ -1,0 +1,121 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+body{
+    font-family: 'Open Sans', sans-serif;
+}
+
+header{
+    height: 100vh;
+    width: 100vw;
+    background: #000;
+}
+
+.navbar{
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0.24);
+}
+
+.navbar a{
+    color: grey;
+
+}
+
+.navbar .nav-links ul{
+    display: flex;
+}
+
+.navbar .nav-links ul li{
+    margin: 0 20px;
+}
+.forTomorrow{
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    align-items: center;
+    text-align: center;
+}
+.forTomorrow h2{
+    font-size: 50px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    align-items: center;
+    text-align: center;
+}
+.forTomorrow p{
+    text-transform: capitalize;
+}
+table{
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.login{
+    width: 100%;
+    margin-top: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login form{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    align-items: center;
+    padding: 20px 10px;
+    background-color: rgba(128, 128, 128, 0.418);
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.login form input[type="text"]{
+
+    margin-bottom: 10px;
+
+}
+
+.login form input[type="submit"]{
+    margin-top: 20px;
+    width: 30%;
+    padding: 10px;
+    
+}
+th{
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+}
+td{
+    padding: 10px;
+    font-size: 18px;
+}
+td a{
+    color:rgb(96, 255, 96);
+    background-color: rgb(116, 0, 0);
+    padding: 4px 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+td a:hover{
+    color: #fff;
+    background-color: #000;
+}
+h3{
+    font-size: 28px;
+    color:rgb(1, 145, 1);
+}
+.edt h3{
+    font-size: 22px;
+    color:black;
+}
