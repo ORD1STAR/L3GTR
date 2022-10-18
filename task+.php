@@ -1,6 +1,6 @@
 
 <?php
-    
+
     if(isset($_GET["mod"]) && isset($_GET["titre"])){
         $file = fopen("tasks.csv", "r");
         $lines = array();
@@ -16,8 +16,10 @@
             fputcsv($file, $line, ";");
         }
         fclose($file);
-
     }
+    
+
+
 ?>
 
 <!DOCTYPE html>
@@ -60,7 +62,7 @@
             <td>
                 <form action="task+.php">
                     <input type="hidden" name="mod" value="RSF">
-                    <input type="text" name="titre" required>
+                    <input type="text" name="titre" value="" required>
                     <input type="submit" value="Add">
                 </form>
             </td>

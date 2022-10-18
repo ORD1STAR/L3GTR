@@ -92,18 +92,23 @@
                         for($j = 0; $j < count($line); $j++){
                             
                             $line[$j] = str_replace("$", "<br>", $line[$j]);
+                            $line[$j] = str_replace('"', "", $line[$j]);
                             echo "<td>$line[$j]</td>";
                             $j++;
                             $line[$j] = str_replace("$", "<br>", $line[$j]);
+                            $line[$j] = str_replace('"', "", $line[$j]);
                             echo "<td>$line[$j]</td>";
                             $j++;
                             $line[$j] = str_replace("$", "<br>", $line[$j]);
+                            $line[$j] = str_replace('"', "", $line[$j]);
                             echo "<td>$line[$j]</td>";
                             $j++;
                             $line[$j] = str_replace("$", "<br>", $line[$j]);
+                            $line[$j] = str_replace('"', "", $line[$j]);
                             echo "<td>$line[$j]</td>";
                             $j++;
                             $line[$j] = str_replace("$", "<br>", $line[$j]);
+                            $line[$j] = str_replace('"', "", $line[$j]);
                             echo "<td>$line[$j]</td>";
                             
                         }
@@ -115,18 +120,23 @@
                         for($j = 0; $j < count($line); $j++){
                             
                             $line[$j] = str_replace("$", "<br>", $line[$j]);
+                            $line[$j] = str_replace('"', "", $line[$j]);
                             echo "<td>$line[$j]</td>";
                             $j++;
                             $line[$j] = str_replace("$", "<br>", $line[$j]);
+                            $line[$j] = str_replace('"', "", $line[$j]);
                             echo "<td>$line[$j]</td>";
                             $j++;
                             $line[$j] = str_replace("$", "<br>", $line[$j]);
+                            $line[$j] = str_replace('"', "", $line[$j]);
                             echo "<td>$line[$j]</td>";
                             $j++;
                             $line[$j] = str_replace("$", "<br>", $line[$j]);
+                            $line[$j] = str_replace('"', "", $line[$j]);
                             echo "<td>$line[$j]</td>";
                             $j++;
                             $line[$j] = str_replace("$", "<br>", $line[$j]);
+                            $line[$j] = str_replace('"', "", $line[$j]);
                             echo "<td>$line[$j]</td>";
                             
                         }
@@ -168,18 +178,23 @@
                     
                     echo "<td>Aujourd'hui</td>";
                     $new[$j] = str_replace("$", "<br>", $new[$j]);
+                    $new[$j] = str_replace('"', "", $new[$j]);
                     echo "<td>$new[$j]</td>";
                     $j++;
                     $new[$j] = str_replace("$", "<br>", $new[$j]);
+                    $new[$j] = str_replace('"', "", $new[$j]);
                     echo "<td>$new[$j]</td>";
                     $j++;
                     $new[$j] = str_replace("$", "<br>", $new[$j]);
+                    $new[$j] = str_replace('"', "", $new[$j]);
                     echo "<td>$new[$j]</td>";
                     $j++;
                     $new[$j] = str_replace("$", "<br>", $new[$j]);
+                    $new[$j] = str_replace('"', "", $new[$j]);
                     echo "<td>$new[$j]</td>";
                     $j++;
                     $new[$j] = str_replace("$", "<br>", $new[$j]);
+                    $new[$j] = str_replace('"', "", $new[$j]);
                     echo "<td>$new[$j]</td>";
 
                     echo "</tr>";
@@ -195,18 +210,23 @@
                                 for($j = 0; $j < count($line); $j++){
 
                                     $line[$j] = str_replace("$", "<br>", $line[$j]);
+                                    $line[$j] = str_replace('"', "", $line[$j]);
                                     echo "<td>$line[$j]</td>";
                                     $j++;
                                     $line[$j] = str_replace("$", "<br>", $line[$j]);
+                                    $line[$j] = str_replace('"', "", $line[$j]);
                                     echo "<td>$line[$j]</td>";
                                     $j++;
                                     $line[$j] = str_replace("$", "<br>", $line[$j]);
+                                    $line[$j] = str_replace('"', "", $line[$j]);
                                     echo "<td>$line[$j]</td>";
                                     $j++;
                                     $line[$j] = str_replace("$", "<br>", $line[$j]);
+                                    $line[$j] = str_replace('"', "", $line[$j]);
                                     echo "<td>$line[$j]</td>";
                                     $j++;
                                     $line[$j] = str_replace("$", "<br>", $line[$j]);
+                                    $line[$j] = str_replace('"', "", $line[$j]);
                                     echo "<td>$line[$j]</td>";
 
                                 }
@@ -234,18 +254,23 @@
                                 for($j = 0; $j < count($line); $j++){
 
                                     $line[$j] = str_replace("$", "<br>", $line[$j]);
+                                    $line[$j] = str_replace('"', "", $line[$j]);
                                     echo "<td>$line[$j]</td>";
                                     $j++;
                                     $line[$j] = str_replace("$", "<br>", $line[$j]);
+                                    $line[$j] = str_replace('"', "", $line[$j]);
                                     echo "<td>$line[$j]</td>";
                                     $j++;
                                     $line[$j] = str_replace("$", "<br>", $line[$j]);
+                                    $line[$j] = str_replace('"', "", $line[$j]);
                                     echo "<td>$line[$j]</td>";
                                     $j++;
                                     $line[$j] = str_replace("$", "<br>", $line[$j]);
+                                    $line[$j] = str_replace('"', "", $line[$j]);
                                     echo "<td>$line[$j]</td>";
                                     $j++;
                                     $line[$j] = str_replace("$", "<br>", $line[$j]);
+                                    $line[$j] = str_replace('"', "", $line[$j]);
                                     echo "<td>$line[$j]</td>";
 
                                 }
@@ -270,18 +295,23 @@
 
                             echo "<td>Demain</td>";
                             $new[$j] = str_replace("$", "<br>", $new[$j]);
+                            $new[$j] = str_replace('"', "", $new[$j]);
                             echo "<td>$new[$j]</td>";
                             $j++;
                             $new[$j] = str_replace("$", "<br>", $new[$j]);
+                            $new[$j] = str_replace('"', "", $new[$j]);
                             echo "<td>$new[$j]</td>";
                             $j++;
                             $new[$j] = str_replace("$", "<br>", $new[$j]);
+                            $new[$j] = str_replace('"', "", $new[$j]);
                             echo "<td>$new[$j]</td>";
                             $j++;
                             $new[$j] = str_replace("$", "<br>", $new[$j]);
+                            $new[$j] = str_replace('"', "", $new[$j]);
                             echo "<td>$new[$j]</td>";
                             $j++;
                             $new[$j] = str_replace("$", "<br>", $new[$j]);
+                            $new[$j] = str_replace('"', "", $new[$j]);
                             echo "<td>$new[$j]</td>";
                         
                             echo "</tr>";
