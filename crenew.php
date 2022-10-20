@@ -22,6 +22,10 @@ foreach ($csv as $fields) {
 }
 
 fclose($file);
+$file = fopen("Logs.txt", "a");
+fwrite($file, "-" . date("H:i:s") ."-> " . $_COOKIE['user'] . 
+                " a modifié l'emploi du temps pour le " . $date . "\n");
+fclose($file);
 
 header("Location: index.php");
 ?>

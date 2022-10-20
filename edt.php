@@ -15,22 +15,33 @@ $annee = $auj[2];
 $numJour = date("N", mktime(0, 0, 0, $mois, $jour, $annee));
 $i = 6;
 $modules = array();
-while(!feof($file)){
-    $line = fgets($file);
-    if($line){
-        if($i == $numJour+1){
+if(file_exists("newEDT.csv")){
+    while(!feof($file)){
+        $line = fgets($file);
+        if($line){
             $line = explode(";", $line);
             $modules = $line;
         }
     }
-    if($i == 5){
-        break;
-    }
-    $i++;
-    if($i == 8){
-        $i = 1;
+}else{
+    while(!feof($file)){
+        $line = fgets($file);
+        if($line){
+            if($i == $numJour+1){
+                $line = explode(";", $line);
+                $modules = $line;
+            }
+        }
+        if($i == 5){
+            break;
+        }
+        $i++;
+        if($i == 8){
+            $i = 1;
+        }
     }
 }
+
 
 
 fclose($file);
@@ -82,20 +93,21 @@ fclose($file);
 <th>14:40-16:10</th>
 <td></td>
 </tr>
-<form action="crenew.php" class="new">
 <tr>
 <th>Demain</th>
-<td><input type="text" name="une" <?php if(isset($modules[0])){echo "value='$modules[0]'";}?>></td>
-<td><input type="text" name="de" <?php if(isset($modules[1])){echo "value='$modules[1]'";}?> ></td>
-<td><input type="text" name="twa" <?php if(isset($modules[2])){echo "value='$modules[2]'";}?> ></td>
-<td><input type="text" name="katr" <?php if(isset($modules[3])){echo "value='$modules[3]'";}?> ></td>
-<td><input type="text" name="sink" <?php if(isset($modules[4])){echo "value='$modules[4]'";}?> ></td>
+<form action="crenew.php" class="new">
+    <?php $i=0;if(file_exists("newEDT.csv")){$i=1;}?>
+<td><input type="text" name="une" <?php if(isset($modules[0])){echo "value='$modules[$i]'";$i++;}?>></td>
+<td><input type="text" name="de" <?php if(isset($modules[1])){echo "value='$modules[$i]'";$i++;}?> ></td>
+<td><input type="text" name="twa" <?php if(isset($modules[2])){echo "value='$modules[$i]'";$i++;}?> ></td>
+<td><input type="text" name="katr" <?php if(isset($modules[3])){echo "value='$modules[$i]'";$i++;}?> ></td>
+<td><input type="text" name="sink" <?php if(isset($modules[4])){echo "value='$modules[$i]'";$i++;}?> ></td>
 <td><input type="submit" value="Valider"></td>
-</tr>
-
-
-
 </form>
+</tr>
+</table>
+
+<a href="reset.php">Reset l'emplois du temps</a>
 
 
 

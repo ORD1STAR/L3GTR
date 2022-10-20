@@ -21,4 +21,9 @@ foreach($lines as $line){
 }
 fclose($file);
 
+$file = fopen("Logs.txt", "a");
+fwrite($file, "-" . date("H:i:s") . "-> " . $_COOKIE['user'] . 
+                " a supprimé une tache du module " . $module ."\n");
+fclose($file);
+
 header("location: task+.php?");

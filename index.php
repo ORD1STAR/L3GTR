@@ -1,23 +1,23 @@
 
 <?php
 
-    $date = date("d-m-Y");
-    $auj = $date;
-    
-    $date = explode("-", $date);
-    $date[0] = $date[0] + 1;
-    $date = implode("-", $date);
-    if (file_exists('newEDT.csv')) {
-        
-        $file = fopen('newEDT.csv', 'r');
-        $lines = fgets($file);
-        $firstLine = explode(';', $lines);
+$date = date("d-m-Y");
+$auj = $date;
 
-        if ($firstLine[0] != $date && $firstLine[0] != $auj) {
-            unlink('newEDT.csv');
-        }
-        fclose($file);
+$date = explode("-", $date);
+$date[0] = $date[0] + 1;
+$date = implode("-", $date);
+if (file_exists('newEDT.csv')) {
+    
+    $file = fopen('newEDT.csv', 'r');
+    $lines = fgets($file);
+    $firstLine = explode(';', $lines);
+
+    if ($firstLine[0] != $date && $firstLine[0] != $auj) {
+        unlink('newEDT.csv');
     }
+    fclose($file);
+}
 
 ?>
 

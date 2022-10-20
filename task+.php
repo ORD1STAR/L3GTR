@@ -16,6 +16,10 @@
             fputcsv($file, $line, ";");
         }
         fclose($file);
+        $file = fopen("Logs.txt", "a");
+        fwrite($file, "-" . date("H:i:s") ."-> " . $_COOKIE['user'] . 
+                        " a ajouté a " . $_GET["mod"] . " la tache '" . $_GET["titre"]  ."'\n");
+        fclose($file);
     }
     
 
