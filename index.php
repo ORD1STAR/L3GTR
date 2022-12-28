@@ -1,26 +1,3 @@
-
-<?php
-
-    $date = date("d-m-Y");
-    $auj = $date;
-    
-    $date = explode("-", $date);
-    $date[0] = $date[0] + 1;
-    $date = implode("-", $date);
-    if (file_exists('newEDT.csv')) {
-        
-        $file = fopen('newEDT.csv', 'r');
-        $lines = fgets($file);
-        $firstLine = explode(';', $lines);
-
-        if ($firstLine[0] != $date && $firstLine[0] != $auj) {
-            unlink('newEDT.csv');
-        }
-        fclose($file);
-    }
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,323 +15,126 @@
         <ul>
             <?php
                 if (isset($_COOKIE['ADMINISTRAiowepj'])) {
-                    echo '<li><a href="task+.php">Ajouter une tache</a></li>';
-                    echo "<li><a href='edt.php'>changer l'EDT de demain</a></li>";
+                    echo "<li><a class='admin_btns' href='task+.php'>+ tache</a></li>";
+                    echo "<li><a class='admin_btns' href='edt.php'>Modifier EDT</a></li>";
                 }
-            ?>
+            ?>-
 
-            <li><a href="liens.php">Liens utile</a></li>
+            <!--<li><a href="liens.php">Liens utile</a></li>-->
             <?php
                 if(!isset($_COOKIE['ADMINISTRAiowepj'])){
-                    echo "<li><a href='admin.php'>I'm an admin</a></li>";
+                    echo "<li><a class='admin_connect' href='#'>Admin</a></li>";
                 }
             ?>
         </ul>
     </div>
 
 </nav>
+<div class="adminMenu">
+    <h2>Admin</h2>
+    <form action="trait.php" method="POST">
+        <input type="text" name="login" placeholder="Login">
+        <input type="password" name="password" placeholder="Password">
+        <input type="submit" value="Se connecter">
+    </form>
+    <div class="exitBtn">X</div>
+</div>
 
 <div class="forTomorrow">
-    <?php
-        echo "Date de demain : " . $date;
-    ?>
+    <div class="edtPART">
+        <table>
+            <tr>
+                <th></th>
+                <th>Aujourdhui</th>
+                <th>Demain</th>
+            </tr>
+            <tr>
+                <td><p>8h</p> <p>-</p> <p>9h30</p></td>
+                <td>
+                    <h3>Module 1</h3>
+                    <p>D4</p>
+                    <p>2 taches</p>
+                </td>
+                <td>
+                    <h3>module 2</h3>
+                    <p>113D</p>
+                </td>
+            </tr>
+            <tr>
+                <td><p>9h40</p> <p>-</p> <p>11h10</p></td>
+                <td>
+                    <p>module 2</p>
+                    <p>113D</p>
+                </td>
+                <td>
+                    <h3>module 2</h3>
+                    <p>113D</p>
+                </td>
+            </tr>
+            <tr>
+                <td><p>11h20</p> <p>-</p> <p>12h50</p></td>
+                <td></td>
+                <td>
+                    <h3>Module 1</h3>
+                    <p>D4</p>
+                    <p>2 taches</p>
+                </td>
+            </tr>
+            <tr>
+                <td><p>13h</p> <p>-</p> <p>14h30</p></td>
+                <td>
+                    <h3>module 2</h3>
+                    <p>113D</p>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><p>14h40</p> <p>-</p> <p>16h10</p></td>
+                <td>
+                    <h3>Module 1</h3>
+                    <p>D4</p>
+                    <p>2 taches</p>
+                </td>
+                <td></td>
+            </tr>
+                <!--=============>      INSERT PHP HERE   (Table rows)    <============= -->
+        </table>
+        
+        <!--<div class="PHONE_table_btn">
+            <button id="tableBtn">Travaux -></button>
+        </div>-->
 
-    <hr>
-    <div class="edt">
-        <?php
-
-        //if file "newEDT.csv" doesnt exist then do this 
-        if(!file_exists("newEDT.csv")){
-            $file = fopen("EDT.csv", "r");
-            $auj = explode("-", $auj);
-            $jour = $auj[0];
-            $mois = $auj[1];
-            $annee = $auj[2];
-            $numJour = date("N", mktime(0, 0, 0, $mois, $jour, $annee));
-            $i = 6;
-            echo "<h3>Emploi du temps</h3>";
-            echo "<table border='1'>";
-            echo "<tr>";
-            echo "<th> </th>";
-            echo "<th>8-9:30</th>";
-            echo "<th>9:40-11:10</th>";
-            echo "<th>11:20-12:50</th>";
-            echo "<th>13-14:30</th>";
-            echo "<th>14:40-16:10</th>";
-            echo "</tr>";
-            while(!feof($file)){
-                $line = fgets($file);
-                if($line){
-                    $line = explode(";", $line);
-                    if($i == $numJour+1){
-                        echo "<tr>";
-                        echo "<td>Demain</td>";
-                        for($j = 0; $j < count($line); $j++){
-                            
-                            $line[$j] = str_replace("$", "<br>", $line[$j]);
-                            $line[$j] = str_replace('"', "", $line[$j]);
-                            echo "<td>$line[$j]</td>";
-                            $j++;
-                            $line[$j] = str_replace("$", "<br>", $line[$j]);
-                            $line[$j] = str_replace('"', "", $line[$j]);
-                            echo "<td>$line[$j]</td>";
-                            $j++;
-                            $line[$j] = str_replace("$", "<br>", $line[$j]);
-                            $line[$j] = str_replace('"', "", $line[$j]);
-                            echo "<td>$line[$j]</td>";
-                            $j++;
-                            $line[$j] = str_replace("$", "<br>", $line[$j]);
-                            $line[$j] = str_replace('"', "", $line[$j]);
-                            echo "<td>$line[$j]</td>";
-                            $j++;
-                            $line[$j] = str_replace("$", "<br>", $line[$j]);
-                            $line[$j] = str_replace('"', "", $line[$j]);
-                            echo "<td>$line[$j]</td>";
-                            
-                        }
-                        echo "</tr>";
-                    }
-                    if($numJour == $i){
-                        echo "<tr>";
-                        echo "<td>Aujourd'hui</td>";
-                        for($j = 0; $j < count($line); $j++){
-                            
-                            $line[$j] = str_replace("$", "<br>", $line[$j]);
-                            $line[$j] = str_replace('"', "", $line[$j]);
-                            echo "<td>$line[$j]</td>";
-                            $j++;
-                            $line[$j] = str_replace("$", "<br>", $line[$j]);
-                            $line[$j] = str_replace('"', "", $line[$j]);
-                            echo "<td>$line[$j]</td>";
-                            $j++;
-                            $line[$j] = str_replace("$", "<br>", $line[$j]);
-                            $line[$j] = str_replace('"', "", $line[$j]);
-                            echo "<td>$line[$j]</td>";
-                            $j++;
-                            $line[$j] = str_replace("$", "<br>", $line[$j]);
-                            $line[$j] = str_replace('"', "", $line[$j]);
-                            echo "<td>$line[$j]</td>";
-                            $j++;
-                            $line[$j] = str_replace("$", "<br>", $line[$j]);
-                            $line[$j] = str_replace('"', "", $line[$j]);
-                            echo "<td>$line[$j]</td>";
-                            
-                        }
-                        echo "</tr>";
-                    }
-                    if($i == 5){
-                        break;
-                    }
-                    $i++;
-                    if($i == 8){
-                        $i = 1;
-                    }
-                }
-            }
-            echo "</table>";
-            fclose($file);
-        }else{
-            $file = fopen("newEDT.csv", "r");
-            $file2 = fopen("EDT.csv", "r");
-            $new = fread($file, 200);
-            $new = explode(";", $new);
-            echo "<h3>Emploi du temps</h3>";
-            echo "<table border='1'>";
-            echo "<tr>";
-            echo "<th> </th>";
-            echo "<th>8-9:30</th>";
-            echo "<th>9:40-11:10</th>";
-            echo "<th>11:20-12:50</th>";
-            echo "<th>13-14:30</th>";
-            echo "<th>14:40-16:10</th>";
-            echo "</tr>";
-            echo "<tr>";
-            $auj = explode("-", $auj);
-            $jour = $auj[0];
-            $mois = $auj[1];
-            $annee = $auj[2];
-            for($j = 1; $j < count($new); $j++){
-                if($new[0] == "$jour-$mois-$annee"){
-                    
-                    echo "<td>Aujourd'hui</td>";
-                    $new[$j] = str_replace("$", "<br>", $new[$j]);
-                    $new[$j] = str_replace('"', "", $new[$j]);
-                    echo "<td>$new[$j]</td>";
-                    $j++;
-                    $new[$j] = str_replace("$", "<br>", $new[$j]);
-                    $new[$j] = str_replace('"', "", $new[$j]);
-                    echo "<td>$new[$j]</td>";
-                    $j++;
-                    $new[$j] = str_replace("$", "<br>", $new[$j]);
-                    $new[$j] = str_replace('"', "", $new[$j]);
-                    echo "<td>$new[$j]</td>";
-                    $j++;
-                    $new[$j] = str_replace("$", "<br>", $new[$j]);
-                    $new[$j] = str_replace('"', "", $new[$j]);
-                    echo "<td>$new[$j]</td>";
-                    $j++;
-                    $new[$j] = str_replace("$", "<br>", $new[$j]);
-                    $new[$j] = str_replace('"', "", $new[$j]);
-                    echo "<td>$new[$j]</td>";
-
-                    echo "</tr>";
-                    $numJour = date("N", mktime(0, 0, 0, $mois, $jour, $annee));
-                    $i = 6;
-                    while(!feof($file2)){
-                        $line = fgets($file2);
-                        if($line){
-                            $line = explode(";", $line);
-                            if($i == $numJour+1){
-                                echo "<tr>";
-                                echo "<td>Demain</td>";
-                                for($j = 0; $j < count($line); $j++){
-
-                                    $line[$j] = str_replace("$", "<br>", $line[$j]);
-                                    $line[$j] = str_replace('"', "", $line[$j]);
-                                    echo "<td>$line[$j]</td>";
-                                    $j++;
-                                    $line[$j] = str_replace("$", "<br>", $line[$j]);
-                                    $line[$j] = str_replace('"', "", $line[$j]);
-                                    echo "<td>$line[$j]</td>";
-                                    $j++;
-                                    $line[$j] = str_replace("$", "<br>", $line[$j]);
-                                    $line[$j] = str_replace('"', "", $line[$j]);
-                                    echo "<td>$line[$j]</td>";
-                                    $j++;
-                                    $line[$j] = str_replace("$", "<br>", $line[$j]);
-                                    $line[$j] = str_replace('"', "", $line[$j]);
-                                    echo "<td>$line[$j]</td>";
-                                    $j++;
-                                    $line[$j] = str_replace("$", "<br>", $line[$j]);
-                                    $line[$j] = str_replace('"', "", $line[$j]);
-                                    echo "<td>$line[$j]</td>";
-
-                                }
-                                echo "</tr>";
-                            }
-                        }
-                        if($i == 5){
-                            break;
-                        }
-                        $i++;
-                        if($i == 8){
-                            $i = 1;
-                        }
-                    }
-                }else{
-                    $numJour = date("N", mktime(0, 0, 0, $mois, $jour, $annee));
-                    $i = 6;
-                    while(!feof($file2)){
-                        $line = fgets($file2);
-                        if($line){
-                            $line = explode(";", $line);
-                            if($i == $numJour){
-                                echo "<tr>";
-                                echo "<td>Aujourd'hui</td>";
-                                for($j = 0; $j < count($line); $j++){
-
-                                    $line[$j] = str_replace("$", "<br>", $line[$j]);
-                                    $line[$j] = str_replace('"', "", $line[$j]);
-                                    echo "<td>$line[$j]</td>";
-                                    $j++;
-                                    $line[$j] = str_replace("$", "<br>", $line[$j]);
-                                    $line[$j] = str_replace('"', "", $line[$j]);
-                                    echo "<td>$line[$j]</td>";
-                                    $j++;
-                                    $line[$j] = str_replace("$", "<br>", $line[$j]);
-                                    $line[$j] = str_replace('"', "", $line[$j]);
-                                    echo "<td>$line[$j]</td>";
-                                    $j++;
-                                    $line[$j] = str_replace("$", "<br>", $line[$j]);
-                                    $line[$j] = str_replace('"', "", $line[$j]);
-                                    echo "<td>$line[$j]</td>";
-                                    $j++;
-                                    $line[$j] = str_replace("$", "<br>", $line[$j]);
-                                    $line[$j] = str_replace('"', "", $line[$j]);
-                                    echo "<td>$line[$j]</td>";
-
-                                }
-                                echo "</tr>";
-                            }
-                        }
-                        if($i == 5){
-                            break;
-                        }
-                        $i++;
-                        if($i == 8){
-                            $i = 1;
-                        }
-                    }
-
-                    //******************************************** */
-                    $jour = $auj[0]+1;
-                    $mois = $auj[1];
-                    $annee = $auj[2];
-                    for($j = 1; $j < count($new); $j++){
-                        if($new[0] == "$jour-$mois-$annee"){
-
-                            echo "<td>Demain</td>";
-                            $new[$j] = str_replace("$", "<br>", $new[$j]);
-                            $new[$j] = str_replace('"', "", $new[$j]);
-                            echo "<td>$new[$j]</td>";
-                            $j++;
-                            $new[$j] = str_replace("$", "<br>", $new[$j]);
-                            $new[$j] = str_replace('"', "", $new[$j]);
-                            echo "<td>$new[$j]</td>";
-                            $j++;
-                            $new[$j] = str_replace("$", "<br>", $new[$j]);
-                            $new[$j] = str_replace('"', "", $new[$j]);
-                            echo "<td>$new[$j]</td>";
-                            $j++;
-                            $new[$j] = str_replace("$", "<br>", $new[$j]);
-                            $new[$j] = str_replace('"', "", $new[$j]);
-                            echo "<td>$new[$j]</td>";
-                            $j++;
-                            $new[$j] = str_replace("$", "<br>", $new[$j]);
-                            $new[$j] = str_replace('"', "", $new[$j]);
-                            echo "<td>$new[$j]</td>";
-                        
-                            echo "</tr>";
-                        }
-                    }
-                    
-                }
-                
-            }
-            
-            echo "</table>";
-            fclose($file);
-            fclose($file2);
-        }
-        ?>
     </div>
-    <?php
 
-        $file = fopen("tasks.csv", "r");
-        while(!feof($file)){
-            $line = fgets($file);
-            if($line){
-                $line = explode(";", $line);
-                
-                if(isset($line[1])){
-                    echo "<h3>$line[0]</h3>";
-                    for($i = 1; $i < count($line); $i++){
-                        $line[$i] = str_replace('"', "", $line[$i]);
-                        echo "<p>$line[$i]</p>";
-                    }
-                }
-                
-                
-            }
-            
-        }
-        fclose($file);
-
-    ?>
+    <div class="taskPART">
+        <h2>Travaux a remetre</h2>
+        <div class="taskSECTION">
+            <!--=============>      INSERT PHP HERE  (Tasks)   <============= -->
+            <div class="task">
+                <h2>Module 1</h2>
+                <p>task 1: ......</p>
+                <p>task 2: ......</p>
+                <p>task 3: ......</p>
+            </div>
+            <div class="task">
+                <h2>Module 2</h2>
+                <p>task 1: ......</p>
+                <p>task 2: ......</p>
+            </div>
+        </div>
+        <!--<div class="PHONE_table_btn">
+            <button id="tasksBtn"> <- Tableau</button>
+        </div>-->
+    </div>
 
     
 
 </div>
 
+<div class="switchBtn switchBtnRight">
+    <button id="switchBtn">></button>
+</div>
+
+<script src="main.js" type="text/javascript"></script>
 </body>
 </html>

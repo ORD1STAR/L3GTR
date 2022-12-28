@@ -3,16 +3,22 @@
     padding: 0;
     text-decoration: none;
     list-style: none;
+    font-family: Arial, Helvetica, sans-serif;
 }
 body{
-    font-family: 'Open Sans', sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-header{
+/*header{               ?????
     height: 100vh;
     width: 100vw;
     background: #000;
-}
+}*/
+
+
+    /* NavBar Part */
 
 .navbar{
     padding: 20px;
@@ -21,28 +27,388 @@ header{
     align-items: center;
     width: 100%;
     box-sizing: border-box;
-    background-color: rgba(0, 0, 0, 0.24);
+    background-color: var(--base-dark);
+    box-shadow: var(--main-box-shadow);
 }
-
 .navbar a{
-    color: grey;
-
+    color: var(--neutral-1);
 }
-
 .navbar .nav-links ul{
     display: flex;
 }
-
 .navbar .nav-links ul li{
     margin: 0 20px;
 }
-.forTomorrow{
+.admin_connect {
+    border: 1px solid var(--neutral-1);
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+.admin_btns {
+    border: 1px solid var(--neutral-1);
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+.adminMenu {
+    z-index: 99;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 0px 50vw rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--base-dark);
+    transition: all 0.3s ease;
+    color: white;
+    overflow: hidden;
+    opacity: 0;
+    transform: scale(0) translate(-50%, -50%);
+}
+.adminMenu form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 5px;
+}
+.adminMenu form input {
+    margin: 10px 0px;
+    padding: 10px 10px;
+    border-radius: 5px;
+    border: 1px solid var(--neutral-2);
+    background-color: var(--neutral-1);
+    color: var(--neutral-3);
+}
+.adminMenu form input[type="submit"] {
+    background-color: var(--accent);
+    color: white;
+    border: 1px solid var(--accent);
+    transition: all 0.5s ease;
+    margin : 20px 0px 0px 0px;
+    width: 100%;
+    cursor: pointer;
+}
+.exitBtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 15px;
+    border-radius: 0px 0px 0px 10px;
+    background-color: var(--accent);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+.admin_menu_visible {
+    opacity: 1;
+    transform: scale(1) translate(-50%, -50%);
+}
+
+
+:root {
+    --neutral-1: rgb(233, 233, 233);
+    --neutral-2: rgb(177, 177, 177);
+    --neutral-3: rgb(94, 94, 94);
+
+    --base-dark: #334A51;
+    --accent: #4F9BAF;
+    --accent-light: #2BDAFF;
+
+    
+    --middle-space-margin: 4rem;
+    --main-box-shadow: rgba(149, 157, 165, 0.4) 0px 0px 24px;;
+}
+
+
+
+
+
+
+
+    /* Main Part */
+
+.forTomorrow {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+    background-color: var(--neutral-1);
+}
+
+        /* EDT Part */
+
+.edtPART{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: var(--middle-space-margin);
+}
+
+table {
+    width: 400px;
+    background-color: var(--neutral-1);
+    border: 1px solid black;
+    border-radius: 5px;
+    overflow: hidden;
+    border-collapse: collapse;
+    box-shadow: var(--main-box-shadow);
+}
+
+table th {
+    background-color: var(--base-dark);
+    color: #fff;
+    text-align: center;
+    height: 40px;
+}
+
+table td {
+    text-align: center;
+    width: 33%;
+    height: 90px;
+}
+
+table td:nth-child(1) {
+    background-color: var(--neutral-2);
+    justify-content: center;
+    width: 150px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-weight: bold;
+    color: var(--neutral-3);
+}
+
+table td:nth-child(2),
+table td:nth-child(3) {
+    background-color: var(--neutral-1);
+    color: var(--neutral-3);
+}
+
+table td:nth-child(2) p:nth-child(3),
+table td:nth-child(3) p:nth-child(3) {
+    background-color: var(--accent);
+    width: 80%;
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+    font-weight: bold;
+    color: white;
+}
+
+
+
+
+
+
+/* Task SECTION */
+
+.taskPART{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: var(--middle-space-margin);
+}
+
+.taskPART h2 {
+    color: var(--base-dark);
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.taskSECTION {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 300px;
+    background-color: var(--neutral-1);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: var(--main-box-shadow);
+}
+
+.task {
+    background-color: var(--base-dark);
+    margin: 5px 0px;
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+    box-shadow: var(--main-box-shadow);
+}
+
+.task h2 {
+    color: var(--neutral-1);
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.task p {
+    color: var(--neutral-3);
+    font-size: 16px;
+    margin-bottom: 5px;
+    background-color: var(--neutral-1);
+    border-radius: 3px;
+    padding: 5px;
+}
+
+
+
+    /* Responsive Part */
+
+.PHONE_table_btn {
+    display: none;
+    cursor: pointer;
+}
+
+.switchBtn {
+    transform: scale(0);
+    position: absolute;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 880px) {
+    .forTomorrow {
+        width: 100%;
+        padding: 25px 0px;
+    }
+    
+    .taskPART {
+        position: absolute;
+        margin-left: 0;
+        width: 90%;
+        transform: translateX(700px);
+    }
+
+    .taskVISIBLE {
+        transform: translateX(0px);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .taskINVISIBLE {
+        transform: translateX(700px);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .edtINVISIBLE {
+        transform: translateX(-700px);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .edtVISIBLE {
+        transform: translateX(0px);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .edtPART {
+        margin-right: 0;
+        margin-bottom: 20px;
+        width: 90%;
+    }
+
+    .edtPART table {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    table td:nth-child(1) {
+        background-color: var(--neutral-2);
+        justify-content: center;
+        width: 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        color: var(--neutral-3);
+    }
+    
+    table td:nth-child(1) p:nth-child(1) {
+        margin-bottom: 5px;
+    }
+
+    table td:nth-child(1) p:nth-child(2) {
+        display: none;
+    }
+
+    /*.PHONE_table_btn {
+        display: block;
+    }
+
+    .PHONE_table_btn button {
+        background-color: var(--accent);
+        border: none;
+        border-radius: 5px;
+        padding: 10px 30px;
+        margin: 10px;
+        font-size: 20px;
+        color: var(--neutral-1);
+        box-shadow: var(--main-box-shadow);
+    }*/
+
+
+
+
+    .switchBtn {
+        transform: scale(1);
+        top: 45%;
+        width: 20px;
+        height: 100px;
+    }
+
+    .switchBtn button {
+        width: 100%;
+        height: 100%;
+        border: none;
+        background-color: var(--accent);
+        border-radius: 5px;
+        color: white;
+        font-weight: bold;
+    }
+
+    .switchBtnRight {
+        right: 0px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .switchBtnLeft {
+        left: 0px;
+        transition: all 0.4s ease-in-out;
+        transform: scaleY(-1) rotateY(180deg);
+    }
+
+}
+
+
+
+
+
+
+/*.forTomorrow{                           ForTomorrow PART (redone)
     font-size: 20px;
-    font-weight: 600;
     letter-spacing: 2px;
     align-items: center;
     text-align: center;
+    background-color: red;
 }
+
 .forTomorrow h2{
     font-size: 50px;
     font-weight: 600;
@@ -58,8 +424,14 @@ table{
     width: 100%;
     text-align: center;
     margin-top: 20px;
-}
+}*/
 
+
+
+
+
+
+/*                              LOGIN PART
 .login{
     width: 100%;
     margin-top: 3em;
@@ -91,6 +463,13 @@ table{
     padding: 10px;
     
 }
+*/
+
+
+
+
+
+/*                                    RANDOM CHANGES ????
 th{
     background-color: #000;
     color: #fff;
@@ -119,3 +498,4 @@ h3{
     font-size: 22px;
     color:black;
 }
+*/

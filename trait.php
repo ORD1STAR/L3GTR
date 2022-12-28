@@ -1,8 +1,8 @@
 <?php
 
 $file = fopen("logins.txt", "r");
-$login = $_GET["login"];
-$password = $_GET["password"];
+$login = $_POST["login"];
+$password = $_POST["password"];
 $read = fread($file, 200);
 fclose($file);
 if(strpos($read, "$login:$password") !== false){
